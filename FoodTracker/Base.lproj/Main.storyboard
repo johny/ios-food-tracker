@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-cf-VxI">
-                                <rect key="frame" x="20" y="80" width="560" height="102"/>
+                                <rect key="frame" x="20" y="80" width="560" height="434"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMz-R9-j5a">
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="18"/>
@@ -38,6 +39,16 @@
                                             <action selector="setLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hkZ-Uj-hvS"/>
                                         </connections>
                                     </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="me5-jj-JNj">
+                                        <rect key="frame" x="0.0" y="114" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="me5-jj-JNj" secondAttribute="height" multiplier="1:1" id="zkY-qC-swM"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Ams-FR-eW2" appends="YES" id="rk3-44-qj8"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="LgD-nt-DCR" firstAttribute="leading" secondItem="f2R-cf-VxI" secondAttribute="leading" id="f5Q-ey-aff"/>
@@ -55,11 +66,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="aMz-R9-j5a" id="z3A-tV-3QJ"/>
                         <outlet property="nameTextField" destination="LgD-nt-DCR" id="HgL-ey-evd"/>
+                        <outlet property="photoImageView" destination="me5-jj-JNj" id="8GG-Ow-vaJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ams-FR-eW2">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="PDK-Eq-IV5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="435" y="374"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
 </document>
